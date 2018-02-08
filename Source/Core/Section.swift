@@ -154,11 +154,11 @@ open class Section {
 
     public required init() {}
 
-    public init(_ initializer: (Section) -> Void) {
+    public init(initializer: (Section) -> Void) {
         initializer(self)
     }
 
-    public init(_ header: String, _ initializer: (Section) -> Void = { _ in }) {
+    public init(header: String, _ initializer: (Section) -> Void = { _ in }) {
         self.header = HeaderFooterView(stringLiteral: header)
         initializer(self)
     }

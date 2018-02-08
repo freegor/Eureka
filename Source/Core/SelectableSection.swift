@@ -121,8 +121,8 @@ open class SelectableSection<Row>: Section, SelectableSectionType where Row: Sel
     /// A closure called when a row of this section is selected.
     public var onSelectSelectableRow: ((Row.Cell, Row) -> Void)?
 
-    public override init(_ initializer: (SelectableSection<Row>) -> Void) {
-        super.init({ _ in })
+    public override init(initializer: (SelectableSection<Row>) -> Void) {
+        super.init(initializer: { _ in })
         initializer(self)
     }
 
