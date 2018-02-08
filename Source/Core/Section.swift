@@ -154,6 +154,9 @@ open class Section {
 
     public required init() {}
 
+    required public init<S>(_ elements: S) where S : Sequence, Section.Element == S.Element {
+    }
+    
     public init(initializer: (Section) -> Void) {
         initializer(self)
     }
@@ -473,6 +476,11 @@ open class MultivaluedSection: Section {
             cell.formViewController()?.tableView(tableView, commit: .insert, forRowAt: indexPath)
         }
         self <<< addRow
+    }
+
+    public required init<S>(_ elements: S) where S : Sequence, Section.Element == S.Element {
+        self.multivaluedOptions = MultivaluedOptions.Insert.union(.Delete)
+        super.init(elements)
     }
 
     /**
