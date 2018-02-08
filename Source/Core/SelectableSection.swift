@@ -128,7 +128,7 @@ open class SelectableSection<Row>: Section, SelectableSectionType where Row: Sel
 
     public init(_ header: String, selectionType: SelectionType, _ initializer: (SelectableSection<Row>) -> Void = { _ in }) {
         self.selectionType = selectionType
-        super.init(header, { _ in })
+        super.init(header: header, { _ in })
         initializer(self)
     }
 

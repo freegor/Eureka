@@ -246,6 +246,12 @@ extension Section: RangeReplaceableCollection {
 
     // MARK: RangeReplaceableCollectionType
 
+    public typealias Element = BaseRow
+
+    public typealias SubSequence = Section
+    
+    public typealias Index = Int
+
     public func append(_ formRow: BaseRow) {
         kvoWrapper.rows.insert(formRow, at: kvoWrapper.rows.count)
         kvoWrapper._allRows.append(formRow)
@@ -259,8 +265,8 @@ extension Section: RangeReplaceableCollection {
             row.wasAddedTo(section: self)
         }
     }
-
-    public func replaceSubrange<C>(_ subrange: Range<Int>, with newElements: C) where C : Collection, C.Element == BaseRow {
+    
+    public func replaceSubrange<C>(_ subrange: Range<Section.Index>, with newElements: C) where C : Collection, Section.Element == C.Element {
         for i in subrange.lowerBound..<subrange.upperBound {
             if let row = kvoWrapper.rows.object(at: i) as? BaseRow {
                 row.willBeRemovedFromSection()
