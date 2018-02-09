@@ -227,7 +227,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
         textField.font = .preferredFont(forTextStyle: .body)
         if let placeholder = (row as? FieldRowConformance)?.placeholder {
             if let color = (row as? FieldRowConformance)?.placeholderColor {
-                textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: color])
+                textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName: color])
             } else {
                 textField.placeholder = (row as? FieldRowConformance)?.placeholder
             }
@@ -353,8 +353,8 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
     private func setupTitleLabel() {
         titleLabel = self.textLabel
         titleLabel?.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel?.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
-        titleLabel?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
+        titleLabel?.setContentHuggingPriority(UILayoutPriority(500.0), for: .horizontal)
+        titleLabel?.setContentCompressionResistancePriority(UILayoutPriority(1000.0), for: .horizontal)
     }
 
     private func displayValue(useFormatter: Bool) -> String? {
